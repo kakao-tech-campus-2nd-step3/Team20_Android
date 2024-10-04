@@ -23,6 +23,13 @@ android {
 
 		resValue("string", "kakao_api_key", getApiKey("KAKAO_API_KEY"))
 		buildConfigField("String", "KAKAO_REST_API_KEY", getApiKey("KAKAO_REST_API_KEY"))
+		ndk {
+			abiFilters.add("arm64-v8a")
+			abiFilters.add("armeabi-v7a")
+			abiFilters.add("x86")
+			abiFilters.add("x86_64")
+		}
+
 	}
 
 	buildTypes {
@@ -44,7 +51,6 @@ android {
 	buildFeatures {
 		viewBinding = true
 		dataBinding = true
-		viewBinding = true
 		buildConfig = true
 	}
 }
@@ -65,5 +71,7 @@ dependencies {
 
 	implementation("com.kakao.maps.open:android:2.9.5")
 	implementation("com.kakao.sdk:v2-all:2.20.3")
+	implementation("com.google.android.gms:play-services-location:21.0.1")
+
 
 }

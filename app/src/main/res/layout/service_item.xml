@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="service"
+            type="com.example.potatoservice.ui.home.Service" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/service_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/magnifier"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/service_image"
+            android:layout_marginStart="20dp">
+            <TextView
+                android:id="@+id/service_title"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:text="@{service.title}"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/service_organization_service_category"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:text="@{service.organization + ' ' + '|' + ' ' + service.category}"
+                />
+            <TextView
+                android:id="@+id/service_recruitment"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:text="@{service.recruitmentPeriod + ' ' + '|' + ' ' + service.recruitmentNumber}"
+                />
+            <TextView
+                android:id="@+id/service_time"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:text="@{service.time + ' ' + '|' + ' ' + service.serviceRecognitionTime}"
+                />
+            <TextView
+                android:id="@+id/service_location"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:text="@{service.location}"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
