@@ -8,4 +8,11 @@
         <item>확정 대기 중</item>
         <item>수행 완료됨</item>
     </string-array>
+  
+  
+    <!-- MapFragment -->
+    <string name="error_auth_failure">API 인증에 실패</string>
+    <string name="error_server_communication_failure">서버 통신 실패</string>
+    <string name="error_unknown">알 수 없는 오류</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.potatoservice.ui.mypage
+package com.example.potatoservice.ui.share
 
 data class Volunteer(
     val title: String,

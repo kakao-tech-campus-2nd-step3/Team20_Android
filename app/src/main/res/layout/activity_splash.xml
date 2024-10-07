@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A02FFF">
+
+    <!-- 중앙에 배치된 이미지 -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_splash_logo_potato" />
+
+    <!-- 하단에 배치된 카카오 로그인 버튼 -->
+    <Button
+        android:id="@+id/kakaoLoginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#FEE500"
+        android:text="카카오 로그인"
+        android:textColor="#000000"
+        android:drawableStart="@drawable/ic_splash_kakao_logo"
+        android:padding="16dp" />
+
+</RelativeLayout>

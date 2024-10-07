@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="56dp"
+    android:height="26dp"
+    android:viewportWidth="56"
+    android:viewportHeight="26">
+
+    <group>
+        <clip-path
+            android:pathData="M13 0H43C50.1797 0 56 5.8203 56 13C56 20.1797 50.1797 26 43 26H13C5.8203 26 0 20.1797 0 13C0 5.8203 5.8203 0 13 0Z"/>
+
+        <path
+            android:pathData="M0 0V26H56V0"
+            android:fillColor="#E6E6FA"/> <!-- 선택된 상태의 색상 -->
+    </group>
+</vector>

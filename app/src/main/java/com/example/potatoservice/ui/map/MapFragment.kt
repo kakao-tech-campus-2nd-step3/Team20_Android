@@ -23,6 +23,8 @@ import com.kakao.vectormap.MapAuthException
 import com.kakao.vectormap.MapLifeCycleCallback
 import com.kakao.vectormap.MapView
 import com.kakao.vectormap.camera.CameraUpdateFactory
+import com.kakao.vectormap.label.Label
+import com.kakao.vectormap.label.LabelLayer
 import com.kakao.vectormap.label.LabelOptions
 import com.kakao.vectormap.label.LabelStyle
 import com.kakao.vectormap.label.LabelStyles
@@ -35,6 +37,9 @@ class MapFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mapView: MapView
     private lateinit var kakaoMap: KakaoMap
+
+
+    private var isCardViewVisible = false // 카드뷰의 현재 상태를 저장
 
 
 
@@ -103,9 +108,9 @@ class MapFragment : Fragment() {
 
             override fun onMapError(error: Exception) {
                 val errorMessage = when ((error as? MapAuthException)?.errorCode) {
-                    401 -> "API 인증에 실패"
-                    499 -> "서버 통신 실패"
-                    else -> "알 수 없는 오류"
+                    401 -> getString(R.string.error_auth_failure)
+                    499 -> getString(R.string.error_server_communication_failure)
+                    else -> getString(R.string.error_unknown)
                 }
                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
             }
@@ -114,6 +119,8 @@ class MapFragment : Fragment() {
                 this@MapFragment.kakaoMap = kakaoMap
                 setInitialCameraPosition()
                 setMarker()
+
+
             }
         })
     }
@@ -125,16 +132,74 @@ class MapFragment : Fragment() {
         }
     }
 
+
+
+
+
+    // MarkerData 클래스 정의 (위치 및 정보를 담고 있음)
+    data class MarkerData(val latLng: LatLng, val title: String, val address: String, val description: String)
+
     private fun setMarker() {
-        val latitude = 37.402005
-        val longitude = 127.108621
-        var styles = LabelStyles.from(LabelStyle.from(R.drawable.ic_marker).setZoomLevel(5))
-        styles = kakaoMap.labelManager!!.addLabelStyles(styles!!)
-        kakaoMap.labelManager!!.layer!!.addLabel(
-            LabelOptions.from(LatLng.from(latitude, longitude))
-                .setStyles(styles)
+        // 10개의 임의의 좌표와 정보를 생성
+        val markerDataList = listOf(
+            MarkerData(LatLng.from(37.8805, 127.7278), "봉사 활동 1", "춘천시 1", "활동 내용 1"),
+            MarkerData(LatLng.from(37.8803, 127.7282), "봉사 활동 2", "춘천시 2", "활동 내용 2"),
+            MarkerData(LatLng.from(37.8807, 127.7280), "봉사 활동 3", "춘천시 3", "활동 내용 3"),
+            MarkerData(LatLng.from(37.8806, 127.7276), "봉사 활동 4", "춘천시 4", "활동 내용 4"),
+            MarkerData(LatLng.from(37.8804, 127.7274), "봉사 활동 5", "춘천시 5", "활동 내용 5"),
+            MarkerData(LatLng.from(37.8809, 127.7283), "봉사 활동 6", "춘천시 6", "활동 내용 6"),
+            MarkerData(LatLng.from(37.8802, 127.7279), "봉사 활동 7", "춘천시 7", "활동 내용 7"),
+            MarkerData(LatLng.from(37.8808, 127.7277), "봉사 활동 8", "춘천시 8", "활동 내용 8"),
+            MarkerData(LatLng.from(37.8801, 127.7275), "봉사 활동 9", "춘천시 9", "활동 내용 9"),
+            MarkerData(LatLng.from(37.8800, 127.7281), "봉사 활동 10", "춘천시 10", "활동 내용 10")
         )
+
+        // 각 데이터를 지도에 표시하고 클릭 리스너를 설정
+        for (markerData in markerDataList) {
+            val styles = LabelStyles.from(LabelStyle.from(R.drawable.ic_map_marker).setZoomLevel(5))
+            val labelOptions = LabelOptions.from(markerData.latLng).setStyles(styles)
+
+            // 라벨 추가
+            val label = kakaoMap.labelManager!!.layer!!.addLabel(labelOptions)
+
+            // 클릭한 라벨을 식별할 수 있도록 label에 tag를 추가해 markerData를 연결
+            label.tag = markerData
+        }
+
+        // 카카오맵의 라벨 클릭 리스너 설정
+        kakaoMap.setOnLabelClickListener(object : KakaoMap.OnLabelClickListener {
+            override fun onLabelClicked(kakaoMap: KakaoMap, layer: LabelLayer, clickedLabel: Label) {
+                // 클릭된 라벨의 tag에서 MarkerData를 가져와 카드뷰를 업데이트
+                val markerData = clickedLabel.tag as MarkerData
+                updateCardView(markerData)
+                showCardView() // 카드뷰 표시
+            }
+        })
     }
+
+    // 카드뷰에 정보를 업데이트하는 함수
+    private fun updateCardView(markerData: MarkerData) {
+        binding.titleText.text = markerData.title
+        binding.descriptionText.text = "${markerData.address} \n${markerData.description}"
+    }
+
+    // CardView를 보이게 설정
+    private fun showCardView() {
+        binding.infoCardView.visibility = View.VISIBLE
+        isCardViewVisible = true
+    }
+
+    // CardView를 숨김
+    private fun hideCardView() {
+        binding.infoCardView.visibility = View.GONE
+        isCardViewVisible = false
+    }
+
+
+
+
+
+
 
     private fun currentLocation(onLocationRetrieved: (LatLng) -> Unit) {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
