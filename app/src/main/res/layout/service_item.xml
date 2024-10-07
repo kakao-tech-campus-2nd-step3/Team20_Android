@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="service"
-            type="com.example.potatoservice.ui.home.Service" />
+            name="volunteer"
+            type="com.example.potatoservice.ui.share.Volunteer" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,32 +33,32 @@
                 android:id="@+id/service_title"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{service.title}"
+                android:text="@{volunteer.title}"
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/service_organization_service_category"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{service.organization + ' ' + '|' + ' ' + service.category}"
+                android:text="@{volunteer.institution + ' ' + '|' + ' ' + volunteer.field}"
                 />
             <TextView
                 android:id="@+id/service_recruitment"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{service.recruitmentPeriod + ' ' + '|' + ' ' + service.recruitmentNumber}"
+                android:text="@{volunteer.recruitmentPeriod + ' ' + '|' + ' ' + volunteer.recruitmentCount}"
                 />
             <TextView
                 android:id="@+id/service_time"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{service.time + ' ' + '|' + ' ' + service.serviceRecognitionTime}"
+                android:text="@{volunteer.activityPeriod + ' ' + '|' + ' ' + volunteer.volunteerHours}"
                 />
             <TextView
                 android:id="@+id/service_location"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{service.location}"/>
+                android:text="@{volunteer.address}"/>
 
         </LinearLayout>
 

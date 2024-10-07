@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PotatoService"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
@@ -22,10 +22,14 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.sign.SignInActivity"/>
+        <activity android:name=".ui.sign.SignUpInfoActivity"/>
+        <activity android:name=".ui.sign.SignUpInterestActivity"/>
+
     </application>
 
 </manifest>

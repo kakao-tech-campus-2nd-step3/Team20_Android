@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/background_item_volunteer"
+    android:layout_margin="2dp">
+
+
+
+    <!-- 봉사활동 제목 -->
+    <TextView
+        android:id="@+id/tvVolunteerTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="봉사활동 제목"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 모집 기관 이름 -->
+    <TextView
+        android:id="@+id/tvInstitutionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="모집 기관 이름"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVolunteerTitle"
+        android:layout_marginTop="10dp" />
+
+    <!-- 봉사 분야 -->
+    <TextView
+        android:id="@+id/tvVolunteerField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="봉사 분야"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/tvInstitutionName"
+        app:layout_constraintTop_toTopOf="@id/tvInstitutionName"
+        android:layout_marginStart="30dp"/>
+
+    <!-- 모집 기간 -->
+    <TextView
+        android:id="@+id/tvRecruitmentPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="모집 기간: 2024.09.01 ~ 2024.09.30"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVolunteerField"
+        android:layout_marginTop="8dp" />
+
+    <!-- 모집 인원 -->
+    <TextView
+        android:id="@+id/tvRecruitmentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="모집 인원: 0/5"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/tvRecruitmentPeriod"
+        app:layout_constraintTop_toTopOf="@id/tvRecruitmentPeriod"
+        android:layout_marginStart="30dp"/>
+
+    <!-- 활동 기간 -->
+    <TextView
+        android:id="@+id/tvActivityPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="활동 기간: 2024.10.01 ~ 2024.10.31"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRecruitmentPeriod"
+        android:layout_marginTop="8dp" />
+
+    <!-- 봉사 인정 시간 -->
+    <TextView
+        android:id="@+id/tvVolunteerHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="봉사 인정 시간: 132시간"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/tvActivityPeriod"
+        app:layout_constraintTop_toTopOf="@id/tvActivityPeriod"
+        android:layout_marginStart="30dp"/>
+
+    <!-- 상세 주소 -->
+    <TextView
+        android:id="@+id/tvVolunteerAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="상세 주소: 주소 주소 주소 주소 주소 주소 주소 주소 주소 주소"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVolunteerHours"
+        android:layout_marginTop="8dp" />
+
+    <!-- 봉사 상태 (확정 대기 중 등) -->
+    <TextView
+        android:id="@+id/tvVolunteerStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확정 대기 중"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVolunteerAddress"
+        android:layout_marginTop="16dp"
+        android:paddingTop="10dp"/>
+
+    <!-- 상태에 따라 다른 버튼 -->
+    <Button
+        android:id="@+id/btnAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수행 확인하기"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/tvVolunteerStatus"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
