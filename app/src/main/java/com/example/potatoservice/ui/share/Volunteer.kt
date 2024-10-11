@@ -1,6 +1,7 @@
 package com.example.potatoservice.ui.share
 
 data class Volunteer(
+    val id: String,
     val title: String,
     val institution: String,
     val field: String,

@@ -55,24 +55,36 @@ class SignUpInterestActivity : AppCompatActivity() {
     private fun sendUserInterests() {
         val userInterest = UserInterest(interestList)
 
-        RetrofitClient.apiService.sendUserInterest(userInterest).enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
-                    val intent = Intent(this@SignUpInterestActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    val errorBody = response.errorBody()?.string()
-                    Log.d("testt", "Failure Response Code: ${response.code()}")
-                    Log.d("testt", "Failure Response Body: $errorBody")
-                    Toast.makeText(this@SignUpInterestActivity, "관심사 전송 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
+        RetrofitClient.apiService.sendUserInterest(userInterest)
+            .enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    if (response.isSuccessful) {
+                        val intent = Intent(this@SignUpInterestActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val errorBody = response.errorBody()?.string()
+                        Log.d("testt", "Failure Response Code: ${response.code()}")
+                        Log.d("testt", "Failure Response Body: $errorBody")
+                        Toast.makeText(
+                            this@SignUpInterestActivity,
+                            "관심사 전송 실패: ${response.message()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.d("testt", "Request Failed: ${t.message}")
-                Toast.makeText(this@SignUpInterestActivity, "관심사 전송 실패: ${t.message}}", Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.d("testt", "Request Failed: ${t.message}")
+                    Toast.makeText(
+                        this@SignUpInterestActivity,
+                        "관심사 전송 실패: ${t.message}}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 }
