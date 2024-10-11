@@ -69,18 +69,24 @@ class SignUpInfoActivity : AppCompatActivity() {
             RetrofitClient.apiService.sendUserInfo(userInfo).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        val intent = Intent(this@SignUpInfoActivity, SignUpInterestActivity::class.java)
+                        val intent =
+                            Intent(this@SignUpInfoActivity, SignUpInterestActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         Log.d("testt", "Failure Response: ${response.message()}")
-                        Toast.makeText(this@SignUpInfoActivity, "정보 전송 실패", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SignUpInfoActivity, "정보 전송 실패", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.d("testt", "Request Failed: ${t.message}")
-                    Toast.makeText(this@SignUpInfoActivity, "서버 오류: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@SignUpInfoActivity,
+                        "서버 오류: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
         } else {

@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="volunteer"
-            type="com.example.potatoservice.ui.share.Volunteer" />
+            name="activity"
+            type="com.example.potatoservice.model.remote.Activity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/bg_item_volunteer">
 
         <ImageView
             android:id="@+id/service_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="20dp"
             android:src="@drawable/magnifier"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="20dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,32 +35,36 @@
                 android:id="@+id/service_title"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{volunteer.title}"
+                android:text="@{activity.actTitle}"
                 android:textSize="20sp"
+                android:textColor="#424242"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/service_organization_service_category"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{volunteer.institution + ' ' + '|' + ' ' + volunteer.field}"
+                android:text="@{activity.category}"
+                android:textColor="#424242"
                 />
             <TextView
-                android:id="@+id/service_recruitment"
+                android:id="@+id/service_notice_date"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{volunteer.recruitmentPeriod + ' ' + '|' + ' ' + volunteer.recruitmentCount}"
+                android:textColor="#424242"
+                android:text="@{@string/마감기간(activity.noticeEndDate)}"
                 />
             <TextView
-                android:id="@+id/service_time"
+                android:id="@+id/service_act_date"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{volunteer.activityPeriod + ' ' + '|' + ' ' + volunteer.volunteerHours}"
-                />
+                android:text="@{@string/활동날짜(activity.actStartDate, activity.actEndDate)}"
+                android:textColor="#424242"/>
             <TextView
                 android:id="@+id/service_location"
                 android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:text="@{volunteer.address}"/>
+                android:text="@{activity.actLocation}"
+                android:textColor="#424242"/>
 
         </LinearLayout>
 

@@ -61,11 +61,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="중학생"
                     android:textColor="#8000FF"
-                    android:textSize="14dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,11 +80,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="고등학생"
                     android:textColor="#8000FF"
-                    android:textSize="14dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,11 +99,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="대학생"
                     android:textColor="#8000FF"
-                    android:textSize="14dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -118,11 +118,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="성인"
                     android:textColor="#8000FF"
-                    android:textSize="14dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
         </LinearLayout>
