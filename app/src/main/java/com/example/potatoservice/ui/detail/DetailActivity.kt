@@ -67,6 +67,7 @@ class DetailActivity : AppCompatActivity() {
 		}
 	}
 	//받아온 id로 봉사 활동 데이터 얻음
+
 	private fun getActivity(id: Int){
 		Log.d("testt", "activity id: $id")
 		viewModel.getDetail(id)
