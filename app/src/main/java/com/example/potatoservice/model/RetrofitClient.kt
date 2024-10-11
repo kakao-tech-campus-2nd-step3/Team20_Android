@@ -6,7 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
     private const val BASE_URL = "https://0293199f-5857-447a-b461-97d6303a1fba.mock.pstmn.io/"
 
-    // Retrofit 인스턴스 생성
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

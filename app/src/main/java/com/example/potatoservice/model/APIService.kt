@@ -2,6 +2,7 @@ package com.example.potatoservice.model
 
 import com.example.potatoservice.model.remote.ActivityDetail
 import com.example.potatoservice.model.remote.ActivityResponse
+import com.example.potatoservice.model.remote.MarkerData
 import com.example.potatoservice.model.remote.UserInfo
 import com.example.potatoservice.model.remote.UserInterest
 import okhttp3.ResponseBody
@@ -23,6 +24,9 @@ interface APIService {
     fun sendUserInterest(
         @Body userInterest: UserInterest
     ): Call<ResponseBody>
+
+    @GET("/api/markers")
+    fun getMarkers(): Call<List<MarkerData>>
 
 
 

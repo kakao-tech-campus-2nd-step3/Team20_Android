@@ -1,70 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Kakao MapView -->
-    <com.kakao.vectormap.MapView
-        android:id="@+id/map_view"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.potatoservice.ui.map.MapViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <!-- Current Location Button -->
-    <ImageButton
-        android:id="@+id/button_current_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/ic_map_location_button_background"
-        android:padding="10dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_map_current_location"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Kakao MapView -->
+        <com.kakao.vectormap.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <!-- Info CardView (Initially Hidden) -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/infoCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_current_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <!-- Current Location Button -->
+        <ImageButton
+            android:id="@+id/button_current_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/ic_map_location_button_background"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_map_current_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
+        <!-- Info CardView (Initially Hidden) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/infoCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button_current_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <!-- 봉사 활동 제목 -->
-            <TextView
-                android:id="@+id/titleText"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="봉사 활동 제목"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <!-- 봉사 활동 세부 정보 -->
-            <TextView
-                android:id="@+id/descriptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="세부 정보가 여기에 표시됩니다."
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                <!-- 봉사 활동 제목 -->
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="봉사 활동 제목"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <!-- 봉사 활동 세부 정보 -->
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="세부 정보가 여기에 표시됩니다."
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
