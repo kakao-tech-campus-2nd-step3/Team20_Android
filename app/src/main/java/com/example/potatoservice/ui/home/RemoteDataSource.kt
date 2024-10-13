@@ -19,46 +19,43 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 	}
 
 	fun search(request: Request, callback: LoadCallback){
-		val page = request.page
-		val size:Int? = request.size
-		val sort:String? = request.sort
-		val beforeDeadlineOnly: Boolean? = request.beforeDeadlineOnly
-		val teenPossibleOnly: Boolean? = request.teenPossibleOnly
-		val category: String? = request.category
-		apiService.getActivities(page, size, sort, beforeDeadlineOnly, teenPossibleOnly, category).enqueue(
-			object : Callback<ActivityResponse>{
-				override fun onResponse(
-					call: Call<ActivityResponse>,
-					response: Response<ActivityResponse>
-				) {
-					if (response.isSuccessful){
-						val activityList = response.body()?.content?.map { content ->
-							Activity(
-								content.actId,
-								content.actTitle,
-								content.actLocation,
-								content.noticeStartDate,
-								content.noticeEndDate,
-								content.actStartDate,
-								content.actEndDate,
-								content.actStartTime,
-								content.actEndTime,
-								content.recruitTotalNum,
-								changeCategory(content.category)
-							)
-						}?: emptyList()
-						callback.onLoaded(activityList)
-					} else{
+		with(request){
+			apiService.getActivities(page, size, sort, beforeDeadlineOnly, teenPossibleOnly, category).enqueue(
+				object : Callback<ActivityResponse>{
+					override fun onResponse(
+						call: Call<ActivityResponse>,
+						response: Response<ActivityResponse>
+					) {
+						if (response.isSuccessful){
+							val activityList = response.body()?.content?.map { content ->
+								Activity(
+									content.actId,
+									content.actTitle,
+									content.actLocation,
+									content.noticeStartDate,
+									content.noticeEndDate,
+									content.actStartDate,
+									content.actEndDate,
+									content.actStartTime,
+									content.actEndTime,
+									content.recruitTotalNum,
+									changeCategory(content.category)
+								)
+							}?: emptyList()
+							callback.onLoaded(activityList)
+						} else{
+							callback.onFailed()
+						}
+					}
+
+					override fun onFailure(call: Call<ActivityResponse>, t: Throwable) {
 						callback.onFailed()
 					}
-				}
 
-				override fun onFailure(call: Call<ActivityResponse>, t: Throwable) {
-					callback.onFailed()
 				}
+			)
+		}
 
-			}
-		)
 	}
 
 	private fun changeCategory(originalCategory: String): String{
