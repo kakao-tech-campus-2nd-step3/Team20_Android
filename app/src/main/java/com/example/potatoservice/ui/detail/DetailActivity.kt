@@ -67,15 +67,14 @@ class DetailActivity : AppCompatActivity() {
 		}
 	}
 	//받아온 id로 봉사 활동 데이터 얻음
-
 	private fun getActivity(id: Int){
-		Log.d("testt", "activity id: $id")
 		viewModel.getDetail(id)
-
 		viewModel.activityDetail.observe(this, Observer {activityDetail ->
 			binding.detail = activityDetail
 			binding.institute = activityDetail?.institute
-			Log.d("testt", "activity title: ${activityDetail?.actTitle}")
+			viewModel.setAgePossible()
+			viewModel.setGroupPossible()
+			binding.invalidateAll()
 		})
 
 	}
