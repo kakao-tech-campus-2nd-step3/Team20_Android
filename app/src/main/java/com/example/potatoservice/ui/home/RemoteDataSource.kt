@@ -18,7 +18,7 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 		fun onFailed()
 	}
 
-	fun ActivityResponse.toActivityList(): List<Activity> {
+	private fun ActivityResponse.toActivityList(): List<Activity> {
 		return content.map { content ->
 			Activity(
 				content.actId,
@@ -109,7 +109,7 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 		fun onLoaded(activityDetail: ActivityDetail)
 		fun onFailed()
 	}
-	fun ActivityDetail.toActivityDetail(): ActivityDetail {
+	private fun ActivityDetail.toActivityDetail(): ActivityDetail {
 		return ActivityDetail(
 			actId,
 			actTitle,
