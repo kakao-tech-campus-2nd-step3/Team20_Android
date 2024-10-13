@@ -18,6 +18,24 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 		fun onFailed()
 	}
 
+	fun ActivityResponse.toActivityList(): List<Activity> {
+		return content.map { content ->
+			Activity(
+				content.actId,
+				content.actTitle,
+				content.actLocation,
+				content.noticeStartDate,
+				content.noticeEndDate,
+				content.actStartDate,
+				content.actEndDate,
+				content.actStartTime,
+				content.actEndTime,
+				content.recruitTotalNum,
+				changeCategory(content.category)
+			)
+		}
+	}
+
 	fun search(request: Request, callback: LoadCallback){
 		with(request){
 			apiService.getActivities(page, size, sort, beforeDeadlineOnly, teenPossibleOnly, category).enqueue(
@@ -27,21 +45,7 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 						response: Response<ActivityResponse>
 					) {
 						if (response.isSuccessful){
-							val activityList = response.body()?.content?.map { content ->
-								Activity(
-									content.actId,
-									content.actTitle,
-									content.actLocation,
-									content.noticeStartDate,
-									content.noticeEndDate,
-									content.actStartDate,
-									content.actEndDate,
-									content.actStartTime,
-									content.actEndTime,
-									content.recruitTotalNum,
-									changeCategory(content.category)
-								)
-							}?: emptyList()
+							val activityList = response.body()?.toActivityList()?: emptyList()
 							callback.onLoaded(activityList)
 						} else{
 							callback.onFailed()
@@ -105,7 +109,30 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 		fun onLoaded(activityDetail: ActivityDetail)
 		fun onFailed()
 	}
-
+	fun ActivityDetail.toActivityDetail(): ActivityDetail {
+		return ActivityDetail(
+			actId,
+			actTitle,
+			actLocation,
+			description,
+			noticeStartDate,
+			noticeEndDate,
+			actStartDate,
+			actEndDate,
+			actStartTime,
+			actEndTime,
+			recruitTotalNum,
+			adultPossible,
+			teenPossible,
+			groupPossible,
+			actWeek,
+			actManager,
+			actPhone,
+			url,
+			category,
+			institute
+		)
+	}
 	fun lookDetail(id: Int, callback: DetailCallback){
 		apiService.getActivityDetail(id).enqueue(
 			object : Callback<ActivityDetail>{
@@ -115,31 +142,7 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService){
 				) {
 					if (response.isSuccessful){
 						val body = response.body()
-						val activityDetail = body?.let {detail ->
-							Log.d("testt", "${detail.actTitle}")
-							ActivityDetail(
-								detail.actId,
-								detail.actTitle,
-								detail.actLocation,
-								detail.description,
-								detail.noticeStartDate,
-								detail.noticeEndDate,
-								detail.actStartDate,
-								detail.actEndDate,
-								detail.actStartTime,
-								detail.actEndTime,
-								detail.recruitTotalNum,
-								detail.adultPossible,
-								detail.teenPossible,
-								detail.groupPossible,
-								detail.actWeek,
-								detail.actManager,
-								detail.actPhone,
-								detail.url,
-								detail.category,
-								detail.institute
-							)
-						}?: nullActivityDetail
+						val activityDetail = body?.toActivityDetail() ?: nullActivityDetail
 						callback.onLoaded(activityDetail)
 
 					} else{
