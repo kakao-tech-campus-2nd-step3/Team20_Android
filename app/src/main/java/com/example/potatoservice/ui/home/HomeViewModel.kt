@@ -3,7 +3,6 @@ package com.example.potatoservice.ui.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.potatoservice.model.remote.Activity
 import com.example.potatoservice.ui.share.Request

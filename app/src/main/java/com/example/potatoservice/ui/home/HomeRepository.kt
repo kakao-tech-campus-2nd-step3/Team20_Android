@@ -13,13 +13,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
-	private val remoteDataSource: RemoteDataSource
+	private val homeSearchData: HomeSearchData
 ){
 	//홈 페이지 부분
 	private val _activityList = MutableStateFlow<List<Activity>>(emptyList())
 	val activityList: StateFlow<List<Activity>> = _activityList.asStateFlow()
 	fun search(request: Request) {
-		remoteDataSource.search(request, object : RemoteDataSource.LoadCallback {
+		homeSearchData.search(request, object : HomeSearchData.LoadCallback {
 			override fun onLoaded(activities: List<Activity>) {
 				_activityList.value = activities
 			}
@@ -29,25 +29,5 @@ class HomeRepository @Inject constructor(
 			}
 
 		})
-	}
-
-	//상세 페이지 부분
-	private var _activityDetail = MutableStateFlow<ActivityDetail?>(null)
-	val activityDetail: StateFlow<ActivityDetail?> = _activityDetail.asStateFlow()
-	suspend fun lookDetail(id:Int){
-		coroutineScope {
-			launch(Dispatchers.IO){
-				remoteDataSource.lookDetail(id, object : RemoteDataSource.DetailCallback {
-					override fun onLoaded(activityDetail: ActivityDetail) {
-						_activityDetail.value = activityDetail
-						Log.d("testt", "onLoaded: ${activityDetail.actTitle}")
-					}
-
-					override fun onFailed() {
-						_activityDetail.value = remoteDataSource.nullActivityDetail
-					}
-				})
-			}
-		}
 	}
 }
