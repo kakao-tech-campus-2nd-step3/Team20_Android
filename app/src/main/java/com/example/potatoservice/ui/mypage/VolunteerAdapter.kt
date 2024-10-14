@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.potatoservice.databinding.ItemVolunteerBinding
 import com.example.potatoservice.ui.share.Volunteer
 
-class VolunteerAdapter(private val volunteerList: List<Volunteer>, private val listener: OnVolunteerClickListener) :
+class VolunteerAdapter(
+    private val volunteerList: List<Volunteer>,
+    private val listener: OnVolunteerClickListener
+) :
     RecyclerView.Adapter<VolunteerAdapter.VolunteerViewHolder>() {
 
-    inner class VolunteerViewHolder(val binding: ItemVolunteerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class VolunteerViewHolder(val binding: ItemVolunteerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(volunteer: Volunteer) {
             // ViewBinding을 통해 뷰에 접근하여 데이터 바인딩
             binding.tvVolunteerTitle.text = volunteer.title
@@ -29,7 +33,8 @@ class VolunteerAdapter(private val volunteerList: List<Volunteer>, private val l
 
     // 레이아웃 인플레이트
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VolunteerViewHolder {
-        val binding = ItemVolunteerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemVolunteerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return VolunteerViewHolder(binding)
     }
 

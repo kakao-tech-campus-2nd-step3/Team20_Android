@@ -2,22 +2,22 @@ package com.example.potatoservice
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.potatoservice.databinding.ActivitySplashBinding
 import com.example.potatoservice.ui.sign.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // 로그인 버튼 클릭 시 SignUpInfoActivity로 이동
-        val kakaoLoginButton: Button = findViewById(R.id.kakaoLoginButton)
-        kakaoLoginButton.setOnClickListener {
+        binding.loginImage.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
-            finish() // SplashActivity 종료
+            finish()
         }
     }
 }
