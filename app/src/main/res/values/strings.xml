@@ -35,6 +35,7 @@
 
     <string name="봉사장소">봉사 장소 : %1$s</string>
     <string name="봉사설명">봉사 설명 : %1$s</string>
+    <string name="카테고리">봉사 종류 : %1$s</string>
     <string name="마감기간">마감 기간 : ~ %1$s</string>
     <string name="모집인원">모집 인원 : %1$d</string>
     <string name="활동날짜">활동 날짜 : %1$s ~ %2$s</string>
