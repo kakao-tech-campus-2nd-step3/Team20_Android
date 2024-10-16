@@ -35,6 +35,7 @@ class HomeFragment : Fragment(), AdapterCallback {
 		binding.viewModel = homeViewModel
 		setRecyclerAdapter()
 		setSpinner()
+		showLoading()
 		//검색 버튼 클릭 시
 		binding.searchButton.setOnClickListener {
 			val page = 0
@@ -47,6 +48,21 @@ class HomeFragment : Fragment(), AdapterCallback {
 			homeViewModel.search(request)
 		}
 		return binding.root
+	}
+	//로딩 화면 설정
+	private fun showLoading(){
+		homeViewModel.loading.observe(viewLifecycleOwner, Observer {loading->
+			if (loading){
+				binding.searchResultRecyclerView.visibility = View.GONE
+				binding.loadingShimmer.visibility = View.VISIBLE
+				binding.loadingShimmer.startShimmer()
+			}else{
+				binding.loadingShimmer.stopShimmer()
+				binding.loadingShimmer.visibility = View.GONE
+				binding.searchResultRecyclerView.visibility = View.VISIBLE
+			}
+		})
+
 	}
 	//검색 결과 리사이클러뷰 설정
 	private fun setRecyclerAdapter(){

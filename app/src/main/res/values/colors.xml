@@ -18,5 +18,6 @@
     <color name="point_brown_2">#4C220E</color>
     <color name="point_green">#0CC850</color>
 
+    <color name="loading_grey">#FFaaaaaa</color>
 
 </resources>
