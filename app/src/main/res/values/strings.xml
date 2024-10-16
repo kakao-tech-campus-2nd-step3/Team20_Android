@@ -24,15 +24,6 @@
     <string name="volunteer_address">봉사 활동 위치</string>
     <string name="call">전화로 문의하기</string>
     <string name="request">신청하기</string>
-
-
-    <!--    MyPage_custom_dialog-->
-    <string name="question_1">간단한 설문에 답해주실 수 있나요?</string>
-    <string name="question_2">수행하신 봉사 내용은 고지된 내용과 일치하였나요?</string>
-    <string name="question_3">봉사 기관의 담당자 분은 친절한 태도로 도와주셨나요?</string>
-    <string name="question_4">이 봉사활동에 다시 참여하고 싶은 마음이 있나요?</string>
-    <string name="question_5">설문에 답해주셔서 감사합니다</string>
-
     <string name="봉사장소">봉사 장소 : %1$s</string>
     <string name="봉사설명">봉사 설명 : %1$s</string>
     <string name="카테고리">봉사 종류 : %1$s</string>
@@ -47,4 +38,14 @@
     <string name="전화번호">전화 번호 : %1$s</string>
     <string name="url">기관 url : %1$s</string>
     <string name="기관리뷰">%1$s 리뷰</string>
+    <string name="loading">로딩 중…</string>
+
+
+    <!--    MyPage_custom_dialog-->
+    <string name="question_1">간단한 설문에 답해주실 수 있나요?</string>
+    <string name="question_2">수행하신 봉사 내용은 고지된 내용과 일치하였나요?</string>
+    <string name="question_3">봉사 기관의 담당자 분은 친절한 태도로 도와주셨나요?</string>
+    <string name="question_4">이 봉사활동에 다시 참여하고 싶은 마음이 있나요?</string>
+    <string name="question_5">설문에 답해주셔서 감사합니다</string>
+
 </resources>

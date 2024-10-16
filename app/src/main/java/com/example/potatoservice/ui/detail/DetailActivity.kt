@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -64,6 +65,7 @@ class DetailActivity : AppCompatActivity() {
 		binding.buttonCurrentLocation.setOnClickListener {
 			moveToCurrentLocation()
 		}
+		showLoading()
 	}
 	//받아온 id로 봉사 활동 데이터 얻음
 	private fun getActivity(id: Int){
@@ -165,5 +167,20 @@ class DetailActivity : AppCompatActivity() {
 			val cameraUpdate = CameraUpdateFactory.newCenterPosition(latLng)
 			kakaoMap.moveCamera(cameraUpdate)
 		}
+	}
+	//로딩 화면 설정
+	private fun showLoading(){
+		viewModel.loading.observe(this, Observer {loading->
+			if (loading){
+				binding.main.visibility = View.GONE
+				binding.loadingLayout.visibility = View.VISIBLE
+				binding.loadingLayout.startShimmer()
+			}else{
+				binding.loadingLayout.stopShimmer()
+				binding.loadingLayout.visibility = View.GONE
+				binding.main.visibility = View.VISIBLE
+			}
+		})
+
 	}
 }
