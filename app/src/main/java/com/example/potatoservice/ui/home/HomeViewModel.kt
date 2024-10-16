@@ -3,7 +3,6 @@ package com.example.potatoservice.ui.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.potatoservice.model.remote.Activity
 import com.example.potatoservice.ui.share.Request
@@ -47,7 +46,7 @@ class HomeViewModel @Inject constructor(
 		"HEALTHCARE_AND_PUBLIC_WELFARE", "COUNSELING_AND_VOLUNTEER_TRAINING", "OTHER_ACTIVITIES")
 	//나이 제한
 	val ageList = listOf("나이 제한 없음", "청소년만", "성인만")
-
+	val loading = repository.loading
 	//검색 기능
 	fun search(
 		request: Request
