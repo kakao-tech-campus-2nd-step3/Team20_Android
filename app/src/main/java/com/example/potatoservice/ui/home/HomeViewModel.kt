@@ -3,19 +3,17 @@ package com.example.potatoservice.ui.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.example.potatoservice.model.remote.Activity
-import com.example.potatoservice.model.remote.SidoGungu
 import com.example.potatoservice.ui.share.Request
-import com.example.potatoservice.ui.share.SpinnerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
 	application: Application,
-	private val homeRepository: HomeRepository,
-	private val spinnerRepository: SpinnerRepository
+	private val repository: HomeRepository
 ): AndroidViewModel(application) {
 
 	var title = "봉사 활동 제목"
@@ -28,11 +26,13 @@ class HomeViewModel @Inject constructor(
 	var location = "상세 장소"
 	var status = "확정 상태"
 
-	val activityList:LiveData<List<Activity>> get() = homeRepository.activityList.asLiveData()
-	val numberOfElements:LiveData<Int> get() = homeRepository.numberOfElements
+	val activityList:LiveData<List<Activity>> get() = repository.activityList.asLiveData()
+	val numberOfElements:LiveData<Int> get() = repository.numberOfElements
 
 	//정렬
 	val sortList = listOf("최신순", "거리순", "마감 임박순")
+	//지역 대분류
+	val majorRegoinList = listOf("지역 대분류", "경기", "대구", "서울")
 	//지역 소분류
 	var minorRegoinList = listOf(
 		listOf("지역 소분류"), listOf("지역 소분류", "남양주", "성남"),
@@ -46,21 +46,12 @@ class HomeViewModel @Inject constructor(
 		"HEALTHCARE_AND_PUBLIC_WELFARE", "COUNSELING_AND_VOLUNTEER_TRAINING", "OTHER_ACTIVITIES")
 	//나이 제한
 	val ageList = listOf("나이 제한 없음", "청소년만", "성인만")
-	//검색 결과 로딩 변수
-	val searchLoading = homeRepository.loading
+	val loading = repository.loading
+
 	//검색 기능
 	fun search(
 		request: Request
 	) {
-		homeRepository.search(request)
+		repository.search(request)
 	}
-	//지역 대분류
-	val sidoList:LiveData<List<SidoGungu>> = spinnerRepository.sidoList
-	val sidoLodaing:LiveData<Boolean> = spinnerRepository.sidoLoading
-	fun searchSidoList(){
-		spinnerRepository.searchSidoList()
-	}
-
-	
 }
-
