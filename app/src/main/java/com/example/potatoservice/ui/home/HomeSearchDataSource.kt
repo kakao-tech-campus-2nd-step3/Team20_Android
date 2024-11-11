@@ -34,7 +34,7 @@ class HomeSearchDataSource @Inject constructor(private val apiService: APIServic
 
 	override fun search(request: Request, callback: HomeSearchData.LoadCallback){
 		with(request){
-			apiService.getActivities(page, size, sort, sidoCode, sidoGunguCode, beforeDeadlineOnly, teenPossibleOnly, category).enqueue(
+			apiService.getActivities(page, size, sort, sidoCode, sidoGunguCode, beforeDeadlineOnly, teenPossibleOnly, category, keyword).enqueue(
 
 				object : Callback<ActivityResponse>{
 					override fun onResponse(
@@ -44,7 +44,8 @@ class HomeSearchDataSource @Inject constructor(private val apiService: APIServic
 						if (response.isSuccessful){
 							val activityList = response.body()?.toActivityList()?: emptyList()
 							val numberOfElements = response.body()?.numberOfElements?:0
-							callback.onLoaded(activityList, numberOfElements)
+							val last = response.body()?.last?:true
+							callback.onLoaded(activityList, numberOfElements, last)
 						} else{
 							callback.onFailed()
 						}
