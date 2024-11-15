@@ -5,7 +5,8 @@
 <a href="https://www.flaticon.com/kr/free-icons/-" title="지도 마커 아이콘">지도 마커 아이콘 제작자: Smashicons - Flaticon</a>
 
 ## 팀 내 배포 링크 모음
-
+- 원스토어 링크
+- 서버 링크
 
 ## 주안점을 두고 개발한 기능
 - 카카오 소셜 로그인을 이용한 회원관리
