@@ -6,7 +6,9 @@
 
 
 ## 안점을 두고 개발한 기능
-- 카카오 소셜 로그인을 이용한 회원관리 
+- 카카오 소셜 로그인을 이용한 회원관리
+![스크린샷 2024-11-15 162159](https://github.com/user-attachments/assets/eab7d558-dea1-4123-824f-f94ee21b9710)
+![스크린샷 2024-11-15 162219](https://github.com/user-attachments/assets/43d6cd70-7c97-43eb-a750-f4f99dc6a095)
 - recyclerview 
 - 여러 (봉사)활동 객체의 위치 정보를 비동기로 가져와 Map에 띄움
 
