@@ -81,7 +81,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/review1"
+                        android:text="@{viewmodel.review1Question}"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -97,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/review2"
+                        android:text="@{viewmodel.review2Question}"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -113,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/review3"
+                        android:text="@{viewmodel.review3Question}"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
