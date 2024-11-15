@@ -20,7 +20,7 @@ https://www.notion.so/20-_-b91d68ea4966448cb6d0d278323aaa74
 
 ![스크린샷 2024-11-15 162159](https://github.com/user-attachments/assets/476d87e5-f71a-4fd8-9749-4a4324c8660c)
 
-- recyclerview
+- recyclerview를 이용해서 활동 목록 및 카테고리 목록 추가
 
 - 여러 (봉사)활동 객체의 위치 정보를 비동기로 가져와 Map에 띄움
 
