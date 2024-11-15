@@ -26,6 +26,8 @@ https://www.notion.so/20-_-b91d68ea4966448cb6d0d278323aaa74
 
 ![스크린샷 2024-11-15 163133](https://github.com/user-attachments/assets/e8f60bb3-b933-4192-9848-d631e0995289)
 
+- Spinner 사용
+
 ## 서비스를 기획하게 된 의도
 - 봉사 활동에 대해서 현장에서 직접 겪은 사람이 알려주는 생생한 현장 후기(= 리뷰)를 얻고 싶을 때 사용하도록 만듬
 
