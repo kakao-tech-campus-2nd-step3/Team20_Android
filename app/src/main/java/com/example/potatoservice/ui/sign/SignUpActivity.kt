@@ -31,7 +31,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun sendSignUpUserInfo() {
         /* 회원 가입 기입 사항
         * 나이 범위 -> 청소년, 대학생, 성인
-        * 봉사 경험 -> 초급자, 중급자, 상급자
+        * 봉사 경험 -> 초심자, 중급자, 상급자
         */
         val nickName = binding.nicknameEditText.text.toString()
 
