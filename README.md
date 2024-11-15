@@ -28,6 +28,11 @@ https://www.notion.so/20-_-b91d68ea4966448cb6d0d278323aaa74
 
 - Spinner 사용
 
+- 서버로부터 질문 내용을 받아와 커스텀 다이얼로그로 띄우기
+- ![image](https://github.com/user-attachments/assets/45133c43-456d-480c-baa8-73304d6bad36)
+
+
+
 ## 서비스를 기획하게 된 의도
 - 봉사 활동에 대해서 현장에서 직접 겪은 사람이 알려주는 생생한 현장 후기(= 리뷰)를 얻고 싶을 때 사용하도록 만듬
 
